@@ -5,13 +5,18 @@ const path = require("path");
 const hostname = "localhost";
 const port = 1616;
 
-const server = http.createServer((req, res => {
+const server = http.createServer((req, res) => {
     if (req.url === "/") {
         const html = fs.readFileSync(path.join(__dirname, "index.html"));
         res.statusCode = 200;
         res.setHeader("content-type", "text/html");
         res.end(html)
     } else {
-        res.statusCode
+        res.statusCode = 404;
+        res.end("bayeke tyler");
     }
-}))
+});
+
+server.listen(port, hostname,() => {
+    console.log("blueTooth connected successfully");
+})
